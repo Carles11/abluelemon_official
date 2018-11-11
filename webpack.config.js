@@ -31,6 +31,9 @@ module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
         new HtmlWebpackPlugin(),
         new webpack.ProgressPlugin(),
       ],
+      resolve: {
+        extensions: ['.js', '.jsx'],
+      }
     },
     modeConfig(mode),
     presetConfig({ mode, presets: presets || [] })

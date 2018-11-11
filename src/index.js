@@ -1,36 +1,16 @@
-import config from './config'
-import './body.css'
-import './index.css'
-import logo from './assets/imgs/js_logo.jpg'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-const env = () => config.env
-const ce = () => import('./createElement')
+import App from './App.jsx';
 
-/**
- * CODE SPLITTING EXAMPLE 
- * 
- * Import 'dinamically' createElement module
- * when event scroll changes. 
- * Webpack is gonna create a bundle
- * for this code and is not gonna be included
- * in the main bundle.
- */
-window.addEventListener('scroll', () => {
-  ce()
-    .then(module => {
-      const img = module.default('img', null, 'test test1', [
-      { 'key': 'src', 'value': logo},
-      { 'key': 'alt', 'value': 'JavaScript logo' }
-    ])
+const elem = document.createElement('main');
+document.body.appendChild(elem);
 
-    document.body.appendChild(img)
-    })
-})
+const wrapApp = AppComponent => (
+  <Router>
+    <AppComponent />
+  </Router>
+);
 
-const title = document.createElement('h1')
-title.innerHTML = 'JavaScript new project boilerplate'
-title.classList.add('tit')
-
-document.body.appendChild(title)
-
-export default env
+ReactDOM.render(wrapApp(App), elem);

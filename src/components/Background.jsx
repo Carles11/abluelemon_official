@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Figure = styled.figure`
   position: absolute;
@@ -23,11 +23,13 @@ const Image = styled.div`
   background-repeat: no-repeat:
 `;
 
-const Background = props => (
-  <Figure>
-    <Image style={{ backgroundImage: `url(${props.url})` }} />
-  </Figure>
-);
+const Background = props => {
+  return (
+    <Figure>
+      <Image style={{ backgroundImage: `url(${props.url})` }} />
+    </Figure>
+  );
+};
 
 Background.propTypes = {
   url: PropTypes.string.isRequired,

@@ -1,10 +1,12 @@
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const path = require('path');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = dirname => ({
   output: {
-    filename: "[chunkhash].js"
+    filename: '[chunkhash].js',
   },
   optimization: {
     minimizer: [
@@ -13,24 +15,36 @@ module.exports = dirname => ({
         parallel: true,
         sourceMap: true, // set to true if you want JS source maps,
       }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+    new WebpackPwaManifest({
+      name: 'ABlueLemon',
+      short_name: 'aBlueLemon',
+      description: 'A Blue Lemon Web App!',
+      background_color: '#ffffff',
+      theme_color: '#333333',
+      crossorigin: 'use-credentials',
+      inject: true,
+      icons: [
+        {
+          src: path.resolve('src/assets/image/icon.png'),
+          sizes: [192, 512], // multiple sizes
+        },
+      ],
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader"
-        ]
-      }
-    ]
-  }
-})
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  },
+});

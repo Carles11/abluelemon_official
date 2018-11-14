@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App.jsx';
+import './css/App.css'
 
-const elem = document.createElement('main');
-document.body.appendChild(elem);
+const elem = document.querySelector('.root');
 
 const wrapApp = AppComponent => (
   <Router>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -16,32 +16,46 @@ const Figure = styled.figure`
 
 const Image = styled.div`
   position: absolute;
-  width: 100%;
+  width: 103%;
   height: 100%;
   top: 0;
-  left: 0;
+  left: -1.5%;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
-  transition: top 0.5s ease-out, left 0.5s ease-in-out, width 0.5s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, top 0.5s ease-out, left 1s ease-in-out,
+    width 1s ease-in-out;
+
+  ${props =>
+    props.render &&
+    css`
+      opacity: 1;
+    `}
 
   ${props =>
     props.animate &&
     css`
       top: ${props => 2 * -props.position + 'px'};
-      left: -5%;
-      width: 110%;
-      filter: blur(${props => props.position / 15 + 'px'});
+      filter: blur(${props => props.position / 12 + 'px'});
     `}
 `;
 
 const Background = props => {
+  const [render, setRender] = useState(false);
   const scroll = useScrollPosition();
   const position = Math.floor(scroll / 10);
+
+  useEffect(() => {
+    if (!render) {
+      setRender(true);
+    }
+  });
 
   return (
     <Figure>
       <Image
+        render={render}
         animate={scroll}
         position={position}
         style={{ backgroundImage: `url(${props.url})` }}

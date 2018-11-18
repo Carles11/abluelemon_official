@@ -3,10 +3,11 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Navigation from './Navigation';
-import logo from '../assets/image/logo.png';
+import logo from '../assets/image/logo_tiny.png';
 
 const Container = styled.header`
   position: fixed;
+  top: 0;
   display: flex;
   align-items: center;
   width: 100%;
@@ -29,14 +30,8 @@ const LogoLink = styled(Link)`
 
 const Logo = styled.img`
   margin-left: 2rem;
-  width: 90px;
+  width: 70px;
   height: auto;
-  transition: width 0.3s, margin 0.3s;
-
-  &:hover {
-    width: 80px;
-    margin-left: 2.3rem;
-  }
 `;
 
 const Background = styled.div`

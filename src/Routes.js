@@ -10,11 +10,6 @@ const Landing = props => (
     {Component => (Component === null ? <Loader /> : <Component {...props} />)}
   </DynamicImport>
 );
-const About = props => (
-  <DynamicImport load={() => import('./views/About')}>
-    {Component => (Component === null ? <Loader /> : <Component {...props} />)}
-  </DynamicImport>
-);
 
 const Projects = props => (
   <DynamicImport load={() => import('./views/Projects')}>
@@ -22,11 +17,17 @@ const Projects = props => (
   </DynamicImport>
 );
 
+const Contact = props => (
+  <DynamicImport load={() => import('./views/Contact')}>
+    {Component => (Component === null ? <Loader /> : <Component {...props} />)}
+  </DynamicImport>
+);
+
 const Routes = () => (
   <Switch>
     <Route exact path='/' component={Landing} />
-    <Route path='/about-me' component={About} />
     <Route path='/projects' component={Projects} />
+    <Route path='/contact' component={Contact} />
   </Switch>
 );
 

@@ -20,7 +20,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
             exclude: '/node_modules/',
           },
           {
-            test: /\.(jpg|jpeg|png|ico|gif)$/,
+            test: /\.(jpg|jpeg|png|ico|gif|ttf)$/,
             use: [{ loader: 'url-loader', options: { limit: 5000 } }],
           },
           {

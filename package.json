@@ -1,6 +1,6 @@
 {
   "name": "abluelemon",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A blue lemon productions web app",
   "main": "./src/index.js",
   "repository": "https://github.com/txiverke/abluelemon.git",
@@ -62,6 +62,7 @@
     "rimraf": "^2.6.2",
     "style-loader": "^0.21.0",
     "styled-components": "^4.0.3",
+    "terser-webpack-plugin": "^1.1.0",
     "url-loader": "^1.1.2",
     "webpack": "^4.8.0",
     "webpack-bundle-analyzer": "^3.0.3",

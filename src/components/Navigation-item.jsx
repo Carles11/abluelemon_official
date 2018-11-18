@@ -23,7 +23,7 @@ const itemStyles = css`
     text-align: center;
     padding: 2rem;
     box-sizing: border-box;
-    border-bottom: 1px solid #18191d;
+    border-bottom: 1px solid #3f424e;
 
     &:last-child {
       border: none;
@@ -37,6 +37,7 @@ const ItemStyles = styled(NavLink)`
 
 const NavigationItem = props => (
   <ItemStyles
+    onClick={props.handleClick}
     key={props.label}
     exact
     to={props.url}
@@ -46,6 +47,7 @@ const NavigationItem = props => (
 );
 
 NavigationItem.propTypes = {
+  handleClick: PropTypes.func,
   label: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 };

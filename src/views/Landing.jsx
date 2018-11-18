@@ -1,24 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import DynamicImport from '../DynamicImport';
-import Loader from '../components/Loader';
-import url from '../assets/image/intro.jpg';
-
-/**
- * Lazy load Background component
- * @param {object} props
- * @returns Component
- */
-const getBackground = props => (
-  <DynamicImport load={() => import('../components/Background')}>
-    {Component => (Component === null ? <Loader /> : <Component {...props} />)}
-  </DynamicImport>
-);
+import AboutSection from '../components/About-section';
+import url from '../assets/image/background.jpg';
+import Title from '../components/Title'
+import Background from '../components/Background'
 
 const Landing = () => {
-  const Background = getBackground({ url });
 
-  return <section>{Background}</section>;
+  return (
+    <Fragment>
+      <Title/>
+      <Background url={url} />
+      <AboutSection />
+    </Fragment>
+  );
 };
 
 export default Landing;

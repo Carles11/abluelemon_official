@@ -145,13 +145,7 @@
      inkscape:window-height="1016"
      inkscape:window-x="0"
      inkscape:window-y="27"
-     inkscape:window-maximized="1">
-    <sodipodi:guide
-       position="87.370407,226.65793"
-       orientation="1,0"
-       id="guide912"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -197,14 +191,12 @@
            height="71.771347"
            width="289.56021"
            id="rect884" /></flowRegion><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bitstream Charter';-inkscape-font-specification:'Bitstream Charter';fill:#15b6cd;fill-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Bold';fill:#15b6cd;fill-opacity:1"
          id="flowPara888"><flowSpan
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Bitstream Charter';-inkscape-font-specification:'Bitstream Charter Bold'"
-           id="flowSpan1016"><flowSpan
-   style="fill:#ffffff"
-   id="flowSpan1018">a</flowSpan>blue</flowSpan><flowSpan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bitstream Charter';-inkscape-font-specification:'Bitstream Charter';fill:#ffffff"
-           id="flowSpan1008">lemon</flowSpan></flowPara></flowRoot>  </g>
+   style="fill:#ffffff;-inkscape-font-specification:'Source Sans Pro Bold';font-family:'Source Sans Pro';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal"
+   id="flowSpan1018">a</flowSpan>blue<flowSpan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Bold';fill:#ffffff"
+   id="flowSpan1008">lemon</flowSpan></flowPara></flowRoot>  </g>
   <g
      inkscape:groupmode="layer"
      id="layer6"
@@ -422,6 +414,43 @@
            style="opacity:1;fill:#15b6cd;fill-opacity:1;stroke:none;stroke-width:0.31244022;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            inkscape:export-xdpi="81.538803"
            inkscape:export-ydpi="81.538803" />
+        <circle
+           style="opacity:1;fill:none;fill-opacity:0.94117647;stroke:#ffffff;stroke-width:1.13241667;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="path2188"
+           cx="106.11909"
+           cy="154.65417"
+           r="47.360416" />
+        <g
+           id="g2201"
+           transform="translate(-0.19844296,7.2954216)">
+          <rect
+             y="122.28948"
+             x="105.58992"
+             height="50.138542"
+             width="1.4552083"
+             id="rect2190"
+             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.80709738;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+          <rect
+             inkscape:transform-center-x="-8.0203058"
+             transform="rotate(45)"
+             inkscape:transform-center-y="-8.0202996"
+             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.54252738;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             id="rect2194"
+             width="1.4552083"
+             height="22.654951"
+             x="196.01166"
+             y="23.713675" />
+          <rect
+             y="174.06937"
+             x="-47.111172"
+             height="22.654951"
+             width="1.4552083"
+             id="rect2196"
+             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.54252738;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             inkscape:transform-center-y="-8.0203026"
+             transform="rotate(-45)"
+             inkscape:transform-center-x="8.0202952" />
+        </g>
       </g>
     </g>
     <g

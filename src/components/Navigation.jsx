@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { GoThreeBars, GoPlus } from 'react-icons/go';
+/*import { GoThreeBars, GoPlus } from 'react-icons/go';*/
 
 import NavigationItem from './Navigation-item';
 
@@ -39,14 +39,14 @@ const iconMenuClose = css`
   transform: rotate(45deg);
 `;
 
-const IconList = styled(GoThreeBars)`
+/*const IconList = styled(GoThreeBars)`
   ${iconMenuStyles}
 `;
 
 const IconClose = styled(GoPlus)`
   ${iconMenuStyles}
   ${iconMenuClose}
-`;
+`;*/
 
 const ListMenu = styled.div`
   display: flex;
@@ -62,13 +62,20 @@ const ListMenu = styled.div`
     width: 100%;
     height: 100vh;
     opacity: 0;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 
     ${props =>
       props.show &&
       css`
         left: 0;
-        opacity: 0.9;
+        opacity: 0.98;
+      `}
+
+    ${props =>
+      !props.show &&
+      css`
+        left: -100%;
+        opacity: 0;
       `}
   }
 `;
@@ -76,17 +83,28 @@ const ListMenu = styled.div`
 const Navigation = () => {
   const [visible, setVisible] = useState(false);
 
-  const handleClick = () => {
+  const handleVisibility = () => {
     setVisible(!visible);
+  };
+
+  const handleClick = () => {
+    if (visible) {
+      setVisible(false);
+    }
   };
 
   return (
     <Nav>
-      {visible && <IconClose onClick={handleClick} />}
-      {!visible && <IconList onClick={handleClick} />}
+      {/*visible && <IconClose onClick={handleVisibility} />}
+      {!visible && <IconList onClick={handleVisibility} />*/}
       <ListMenu show={visible}>
         {nav_data.map(nav => (
-          <NavigationItem key={nav.label} label={nav.label} url={nav.url} />
+          <NavigationItem
+            handleClick={handleClick}
+            key={nav.label}
+            label={nav.label}
+            url={nav.url}
+          />
         ))}
       </ListMenu>
     </Nav>

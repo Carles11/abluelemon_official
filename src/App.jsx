@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Helmet from 'react-helmet';
 
 import Header from './components/Header';
 import Routes from './Routes';
+import Footer from './components/Footer';
 
 const App = props => {
   return (

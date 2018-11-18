@@ -1,12 +1,37 @@
-@import "./_globals.css";
+@import './_globals.css';
+
+@font-face {
+  font-family: Bold;
+  font-display: block;
+  src: local('Bold'), url(../assets/font/Volkhov-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Regular;
+  font-display: block;
+  src: local('Regular'),
+    url(../assets/font/OpenSans-Light.ttf) format('truetype');
+}
 
 body {
   position: relative;
-  font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Regular, sans-serif;
+  font-size: calc(16px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  font-family: Regular, serif;
   color: var(--textColor);
   background: var(--bgColor);
   margin: 0;
   padding: 0;
   height: 100vh;
+}
+
+h1, h2, h3{
+  font-family: Bold, sans-serif;
+  font-display: block;
+  font-weight: 100;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: calc(40px + (26 - 14) * ((100vw - 600px) / (1600 - 900)));
 }

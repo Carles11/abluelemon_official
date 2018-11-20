@@ -5,8 +5,8 @@ const Container = styled.article`
   width: 100%;
   position: relative;
   background: #2a2e3e;
-  padding: 6rem 1rem 1rem;
-  margin-bottom: 8rem;
+  padding: 6rem 1.5rem 1.5rem;
+  margin-bottom: 1rem;
   box-sizing: border-box;
 
   &:nth-child(2) {
@@ -15,20 +15,22 @@ const Container = styled.article`
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
+    width: 49%; 
+    margin-bottom: 8rem;
+
     &:nth-child(2) {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
+      margin-right: 0;
+      margin-left: 2%;
+    }
   }
 
   @media only screen and (max-width: 768px) {
+    margin-bottom: 8rem;
+
     &:nth-child(2) {
       margin-left: 0;
       margin-right: 0;
-    }
 
-    &:last-child {
-      margin-bottom: 2rem;
     }
   }
 `;

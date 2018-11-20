@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import Box from './Box';
 import { useWindowSize, useScrollPosition } from './Hooks';
 import img from '../assets/image/xavi.jpg';
-import quotation from '../assets/image/quotation.png';
 
 const data = [
   {
@@ -18,7 +17,7 @@ const data = [
 
   {
     _id: 2,
-    name: 'Carles Del Río',
+    name: 'Xavi Del Río',
     description:
       'Carles brings an over 12 years professional experience in organizing and technical-production of events. Carles is Eventmanager (IHK Hamburg, Germany) and Dipl. Audio Engineer (SAE Frankfurt, Germany) and works today as such on live events and festivals in Germany and surrounding European countries. He takes care of all production logistics for the Company as Head of Production.',
     img,
@@ -26,7 +25,7 @@ const data = [
   },
   {
     _id: 3,
-    name: 'Carles Del Río',
+    name: 'Hassan',
     description:
       'Carles brings an over 12 years professional experience in organizing and technical-production of events. Carles is Eventmanager (IHK Hamburg, Germany) and Dipl. Audio Engineer (SAE Frankfurt, Germany) and works today as such on live events and festivals in Germany and surrounding European countries. He takes care of all production logistics for the Company as Head of Production.',
     img,
@@ -43,19 +42,19 @@ const Container = styled.section`
   align-items: center;
   margin-top: ${props => props.position + 'px'};
   min-height: ${props => props.position + 'px'};
-  padding: 5% 5% 1rem;
+  padding: 5% 10% 1rem;
   box-sizing: border-box;
   background: #262938;
   transition: top 0.5s ease-out;
   z-index: 1;
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    padding: 1rem;
+    padding: 5%;
   }
 
   @media only screen and (max-width: 768px) {
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.5rem;
   }
 `;
 
@@ -70,15 +69,9 @@ const Text = styled.div`
   }
 `;
 
-const Image = styled.div`
-  background: url(${quotation}) no-repeat 40% 0 transparent;
-  width: 39px;
-  height: 29px;
-  padding: 2.5rem 2rem 0.5rem;
-`;
-
 const Title = styled.h3`
   margin-top: 0;
+  text-align: center;
 `;
 
 const SectionTitle = styled.h2`
@@ -89,11 +82,17 @@ const SectionTitle = styled.h2`
 const Boxes = styled.div`
   position: relative;
   display: flex;
-  margin: 3rem 0 0;
-  padding: 10rem 0 0;
-  border-top: 1px dotted #2a2e3e;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0 0;
+  padding: 5rem 0 0;
 
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (min-width: 768px) and (max-width: 1224px) {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  @media only screen and (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -105,8 +104,7 @@ const AboutSection = () => {
     <Container id='aboutSection' position={size.h}>
       <SectionTitle>About us</SectionTitle>
       <Text>
-        <Image />
-        <Title className='title'>
+        <Title>
           We achieve a positive economic and social impact of our events
           generated for the surrounding areas, while also providing visibility
           for the surrounding businesses.

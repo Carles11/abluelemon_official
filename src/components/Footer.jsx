@@ -8,7 +8,7 @@ const Container = styled.footer`
   position: relative;
   padding: 1rem;
   box-sizing: border-box;
-  background: #262938;
+  background: #2a2e3e;
   transition: top 0.5s ease-out;
   z-index: 1;
   border-top: 1px dotted #1b1c23;

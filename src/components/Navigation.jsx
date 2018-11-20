@@ -17,10 +17,6 @@ const Nav = styled.nav`
   z-index: 1001;
 `;
 
-const iconMenuStyles = css`
-  
-`;
-
 const Icon = styled(IconMenu)`
   position: relative;
   display: none;
@@ -82,7 +78,7 @@ const Navigation = props => {
 
   return (
     <Nav>
-      <Icon handleIconClick={handleVisibility} {...props} />
+      <Icon visible={visible} handleIconClick={handleVisibility} {...props} />
       <ListMenu show={visible}>
         {nav_data.map(nav => (
           <NavigationItem

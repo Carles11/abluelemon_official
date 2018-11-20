@@ -10,7 +10,8 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
     {
       mode,
       output: {
-        filename: 'bundle.js',
+        filename: '[hash].bundle.js',
+        chunkFilename: '[id].[chunkhash].lazy.js',
       },
       module: {
         rules: [
@@ -32,9 +33,9 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
       plugins: [
         new HtmlWebpackPlugin({
           template: './public/index.html',
-          favicon: './src/assets/image/favicon.ico'
+          favicon: './src/assets/image/favicon.ico',
         }),
-        new webpack.ProgressPlugin()
+        new webpack.ProgressPlugin(),
       ],
       resolve: {
         extensions: ['.js', '.jsx'],

@@ -1,16 +1,24 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+
+import { useWindowSize } from './Hooks';
 
 const Container = styled.footer`
+  width: 100%;
   position: relative;
-  background: yellow;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: #262938;
+  transition: top 0.5s ease-out;
   z-index: 1;
-`
+  border-top: 1px dotted #1b1c23;
+`;
 
 const Footer = props => {
-  return (
-    <Container>JUst a footer</Container>
-  )
-}
+  const { h } = useWindowSize();
+  let position = Number(props.order) * h;
 
-export default Footer
+  return <Container position={position}>&copy; A blue lemon</Container>;
+};
+
+export default Footer;

@@ -1,33 +1,32 @@
-// @flow
-
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import DynamicImport from './DynamicImport';
+import Loadable from 'react-loadable';
+
 import Loader from './components/Loader.jsx';
 
-const Landing = props => (
-  <DynamicImport load={() => import('./views/Landing')}>
-    {Component => (Component === null ? <Loader /> : <Component {...props} />)}
-  </DynamicImport>
-);
+const LoadLanding = 
+  Loadable({
+    loader: () => import(/* webpackChunkName: "landing" */'./views/Landing'),
+    loading: Loader,
+  });
 
-const Projects = props => (
-  <DynamicImport load={() => import('./views/Projects')}>
-    {Component => (Component === null ? <Loader /> : <Component {...props} />)}
-  </DynamicImport>
-);
+  const LoadProjects = 
+  Loadable({
+    loader: () => import(/* webpackChunkName: "projects" */'./views/Projects'),
+    loading: Loader,
+  });
 
-const Contact = props => (
-  <DynamicImport load={() => import('./views/Contact')}>
-    {Component => (Component === null ? <Loader /> : <Component {...props} />)}
-  </DynamicImport>
-);
+  const LoadContact = 
+  Loadable({
+    loader: () => import(/* webpackChunkName: "contact" */'./views/Contact'),
+    loading: Loader,
+  });
 
 const Routes = () => (
   <Switch>
-    <Route exact path='/' component={Landing} />
-    <Route path='/projects' component={Projects} />
-    <Route path='/contact' component={Contact} />
+    <Route exact path='/' component={LoadLanding} />
+    <Route path='/projects' component={LoadProjects} />
+    <Route path='/contact' component={LoadContact} />
   </Switch>
 );
 

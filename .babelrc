@@ -1,4 +1,5 @@
 {
   "presets": ["env", "react"],
-  "plugins": ["dynamic-import-webpack", "transform-class-properties"]
+  "plugins": ["dynamic-import-webpack", "transform-class-properties"],
+  "comments": true
 }

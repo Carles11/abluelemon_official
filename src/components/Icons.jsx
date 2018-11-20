@@ -23,7 +23,6 @@ const Bar = styled.div`
 `;
 
 const Bar1 = styled(Bar)`
-  transform: rotate(0);
   transform-origin: top left;
   ${props =>
     props.active &&
@@ -40,8 +39,8 @@ const Bar2 = styled(Bar)`
       opacity: 0;
     `}
 `;
+
 const Bar3 = styled(Bar)`
-  transform: rotate(0);
   transform-origin: bottom left;
   ${props =>
     props.active &&
@@ -59,8 +58,18 @@ const IconMenu = props => {
     handleIconClick(active);
   }
 
+  useEffect(() => {
+    if (!props.visible && active) {
+      setActive(false)
+    }
+  })
+
   return (
-    <ButtonIconMenu className={className} onClick={handleClick}>
+    <ButtonIconMenu
+      className={className}
+      onClick={handleClick}
+      role='button'
+      arial-label='show/hide menu'>
       <Bar1 active={active} className='bars' />
       <Bar2 active={active} className='bars' />
       <Bar3 active={active} className='bars' />
@@ -69,7 +78,9 @@ const IconMenu = props => {
 };
 
 IconMenu.propTypes = {
+  className: PropTypes.string,
   handleIconClick: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired
 };
 
 export default IconMenu;

@@ -34,4 +34,20 @@ function useScrollPosition() {
   return position;
 }
 
-export { useWindowSize, useScrollPosition };
+function useVerticalPosition(elem = null) {
+  const [position, setPosition] = useState(elem);
+
+  useEffect(() => {
+    console.log(elem)
+    if (elem) {
+      console.log('entra');
+      const handleScroll = elem => setPosition(elem.getBoundingClientRect());
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  });
+
+  return position;
+}
+
+export { useWindowSize, useScrollPosition, useVerticalPosition };

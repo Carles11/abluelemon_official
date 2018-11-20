@@ -14,7 +14,7 @@
 body {
   position: relative;
   font-family: Regular, sans-serif;
-  font-size: calc(16px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(16px + (18 - 14) * ((100vw - 300px) / (1600 - 100)));
   font-family: Regular, serif;
   color: #ffffff;
   background: #262938;
@@ -33,5 +33,18 @@ h3 {
 }
 
 h1 {
-  font-size: calc(40px + (26 - 14) * ((100vw - 600px) / (1600 - 900)));
+  font-size: calc(40px + (50 - 30) * ((100vw - 600px) / (1600 - 900)));
+}
+
+h2 {
+  font-size: calc(35px + (40 - 30) * ((100vw - 600px) / (1600 - 900)));
+}
+
+h3 {
+  font-size: calc(25px + (30 - 20) * ((100vw - 600px) / (1600 - 900)));
+}
+
+a{
+  color: #15b6cd;
+  text-decoration: none;
 }

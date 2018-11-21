@@ -9,6 +9,7 @@ const Container = styled.article`
   margin-bottom: 1rem;
   box-sizing: border-box;
 
+
   &:nth-child(2) {
     margin-left: 2rem;
     margin-right: 2rem;
@@ -65,13 +66,13 @@ const Text = styled.p`
 `;
 
 const Box = props => {
-  const { name, description, img, mail } = props;
+  const { name, description, img, mail, role } = props;
 
   return (
     <Container>
       <Image src={img} alt={name} />
       <Title>{name}</Title>
-      <Subtitle>CTO & FOUNDER</Subtitle>
+      <Subtitle>{role}</Subtitle>
       <Text>{description}</Text>
       <a href={`mailto:${mail}`}>{mail}</a>
     </Container>

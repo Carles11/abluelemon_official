@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import Box from './Box';
-import { useWindowSize, useScrollPosition } from './Hooks';
-import img from '../assets/image/xavi.jpg';
+import { useWindowSize } from './Hooks';
+import img1 from '../assets/image/about_carles.jpg';
+import img2 from '../assets/image/about_xavi.jpg';
+import img3 from '../assets/image/about_hassan.jpg';
 
 const data = [
   {
@@ -11,8 +13,9 @@ const data = [
     name: 'Carles Del Río',
     description:
       'Carles brings an over 12 years professional experience in organizing and technical-production of events. Carles is Eventmanager (IHK Hamburg, Germany) and Dipl. Audio Engineer (SAE Frankfurt, Germany) and works today as such on live events and festivals in Germany and surrounding European countries. He takes care of all production logistics for the Company as Head of Production.',
-    img,
+    img: img1,
     email: 'carles@gmail.com',
+    role: 'CTO & FOUNDER',
   },
 
   {
@@ -20,16 +23,18 @@ const data = [
     name: 'Xavi Del Río',
     description:
       'Carles brings an over 12 years professional experience in organizing and technical-production of events. Carles is Eventmanager (IHK Hamburg, Germany) and Dipl. Audio Engineer (SAE Frankfurt, Germany) and works today as such on live events and festivals in Germany and surrounding European countries. He takes care of all production logistics for the Company as Head of Production.',
-    img,
+    img: img2,
     email: 'carles@gmail.com',
+    role: 'CEO & FOUNDER',
   },
   {
     _id: 3,
-    name: 'Hassan',
+    name: 'Hassan Mokdad',
     description:
       'Carles brings an over 12 years professional experience in organizing and technical-production of events. Carles is Eventmanager (IHK Hamburg, Germany) and Dipl. Audio Engineer (SAE Frankfurt, Germany) and works today as such on live events and festivals in Germany and surrounding European countries. He takes care of all production logistics for the Company as Head of Production.',
-    img,
+    img: img3,
     email: 'carles@gmail.com',
+    role: 'CTO & FOUNDER',
   },
 ];
 
@@ -42,10 +47,9 @@ const Container = styled.section`
   align-items: center;
   margin-top: ${props => props.position + 'px'};
   min-height: ${props => props.position + 'px'};
-  padding: 5% 10% 1rem;
+  padding: 10% 10% 1rem;
   box-sizing: border-box;
   background: #262938;
-  transition: top 0.5s ease-out;
   z-index: 1;
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
@@ -84,8 +88,9 @@ const Boxes = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5rem 0 0;
-  padding: 5rem 0 0;
+  margin: 3rem 0 0;
+  padding: 8rem 0 0;
+  border-top: 2px dotted #30354c;
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     flex-wrap: wrap;
@@ -98,10 +103,10 @@ const Boxes = styled.div`
 `;
 
 const AboutSection = () => {
-  const size = useWindowSize();
+  const { h: height } = useWindowSize();
 
   return (
-    <Container id='aboutSection' position={size.h}>
+    <Container id='aboutSection' position={height}>
       <SectionTitle>About us</SectionTitle>
       <Text>
         <Title>
@@ -119,6 +124,7 @@ const AboutSection = () => {
             name={a.name}
             description={a.description}
             mail={a.email}
+            role={a.role}
           />
         ))}
       </Boxes>

@@ -14,7 +14,11 @@ const Figure = styled.figure`
   overflow: hidden;
 `;
 
-const Image = styled.div`
+const Image = styled.div.attrs({
+  style: props => ({
+    top: 2 * -props.position + 'px',
+  }),
+})`
   position: absolute;
   width: 103%;
   height: 100%;
@@ -24,20 +28,12 @@ const Image = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, top 0.5s ease-out, left 1s ease-in-out,
-    width 1s ease-in-out;
+  transition: opacity 0.3s ease-in-out, top 0.5s ease-out;
 
   ${props =>
     props.render &&
     css`
       opacity: 1;
-    `}
-
-  ${props =>
-    props.animate &&
-    css`
-      top: ${props => 2 * -props.position + 'px'};
-      filter: blur(${props => props.position / 12 + 'px'});
     `}
 `;
 
@@ -56,7 +52,6 @@ const Background = props => {
     <Figure>
       <Image
         render={render}
-        animate={scroll}
         position={position}
         style={{ backgroundImage: `url(${props.url})` }}
       />

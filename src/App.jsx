@@ -1,24 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 
 import Header from './components/Header';
 import Routes from './Routes';
-import Footer from './components/Footer';
+import SmoothScroll from './helpers/smoothScroll';
 
-const App = () => (
-  <React.Fragment>
-    <Helmet
-      titleTemplate={`%s | A BLUE LEMON`}
-      defaultTitle='A BLUE LEMON PRODUCTIONS'>
-      <link rel='canonical' href='https://abluelemon.com' />
-      <meta
-        name='description'
-        content='A Blue Lemon productions, Musical productions'
-      />
-    </Helmet>
-    <Header />
-    <Routes />
-  </React.Fragment>
-);
+const App = () => {
+  SmoothScroll(document, 120, 12);
+
+  return (
+    <React.Fragment>
+      <Helmet
+        titleTemplate={`%s | A BLUE LEMON`}
+        defaultTitle='A BLUE LEMON PRODUCTIONS'>
+        <link rel='canonical' href='https://abluelemon.com' />
+        <meta
+          name='description'
+          content='A Blue Lemon productions, Musical productions'
+        />
+      </Helmet>
+      <Header />
+      <Routes />
+    </React.Fragment>
+  );
+};
 
 export default App;

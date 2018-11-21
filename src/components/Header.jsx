@@ -44,7 +44,7 @@ const Background = styled.div`
   height: 73px;
   z-index: 999;
   opacity: 0.6;
-  transition: top 0.3s ease-in-out, opacity 0.5s ease-in-out;
+  transition: top 600ms cubic-bezier(0.19, 1, 0.22, 1), opacity 600ms cubic-bezier(0.19, 1, 0.22, 1);
 
   ${props => props.animate && css`
     top: 0;

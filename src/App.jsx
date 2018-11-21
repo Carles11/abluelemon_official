@@ -6,7 +6,7 @@ import Routes from './Routes';
 import SmoothScroll from './helpers/smoothScroll';
 
 const App = () => {
-  SmoothScroll(document, 120, 12);
+  SmoothScroll(document, 90, 12);
 
   return (
     <React.Fragment>

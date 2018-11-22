@@ -65,11 +65,11 @@ const Title = () => {
   const scroll = useScrollPosition();
 
   useEffect(() => {
-    if (!animate && scroll < 250) {
+    if (!animate && scroll < 400) {
       setAnimate(true);
       setInitial(false);
     }
-    if (!initial && scroll > 250) {
+    if (!initial && scroll > 400) {
       setInitial(true);
       setAnimate(false);
     }

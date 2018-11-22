@@ -1,5 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import 'lazysizes';
+
 
 import Header from './components/Header';
 import Routes from './Routes';

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import Box from './Box';
-import { useWindowSize } from './Hooks';
+import { useWindowSize, useScrollPosition } from './Hooks';
 import img1 from '../assets/image/about_carles.jpg';
 import img2 from '../assets/image/about_xavi.jpg';
 import img3 from '../assets/image/about_hassan.jpg';
 
+// @todo API REQUEST
 const data = [
   {
     _id: 1,
@@ -47,7 +48,7 @@ const Container = styled.section`
   align-items: center;
   margin-top: ${props => props.position + 'px'};
   min-height: ${props => props.position + 'px'};
-  padding: 10% 10% 1rem;
+  padding: 3% 10% 1rem;
   box-sizing: border-box;
   background: #262938;
   z-index: 1;
@@ -62,25 +63,41 @@ const Container = styled.section`
   }
 `;
 
-const Text = styled.div`
+const Title = styled.h3`
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 25px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
+
+  ${props =>
+    props.render &&
+    css`
+      opacity: 1;
+      margin-top: 0;
+    `}
 
   @media only screen and (max-width: 1024px) {
     width: 100%;
   }
 `;
 
-const Title = styled.h3`
-  margin-top: 0;
-  text-align: center;
-`;
-
 const SectionTitle = styled.h2`
   color: #15b6cd;
-  margin: 3rem 0 1rem;
+  margin: 4.5rem 0 1rem;
+  opacity: 0;
+  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
+
+
+  ${props =>
+    props.render &&
+    css`
+      opacity: 1;
+      margin-top: 3rem;
+    `}
 `;
 
 const Boxes = styled.div`
@@ -103,22 +120,33 @@ const Boxes = styled.div`
 `;
 
 const AboutSection = () => {
+  const [render, setRender] = useState(false);
   const { h: height } = useWindowSize();
+  const scroll = useScrollPosition();
+
+  useEffect(() => {
+    if (!render && scroll > height / 4) {
+      setRender(true);
+    }
+
+    if (render && scroll < height / 4) {
+      setRender(false);
+    }
+  });
 
   return (
-    <Container id='aboutSection' position={height}>
-      <SectionTitle>About us</SectionTitle>
-      <Text>
-        <Title>
-          We achieve a positive economic and social impact of our events
-          generated for the surrounding areas, while also providing visibility
-          for the surrounding businesses.
-        </Title>
-      </Text>
+    <Container position={height}>
+      <SectionTitle render={render}>About us</SectionTitle>
+      <Title render={render}>
+        We achieve a positive economic and social impact of our events generated
+        for the surrounding areas, while also providing visibility for the
+        surrounding businesses.
+      </Title>
 
       <Boxes>
-        {data.map(a => (
+        {data.map((a, i) => (
           <Box
+            order={i + 1}
             key={a._id}
             img={a.img}
             name={a.name}

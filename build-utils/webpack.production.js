@@ -1,9 +1,10 @@
 const path = require('path');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 module.exports = dirname => ({
   output: {
@@ -12,7 +13,8 @@ module.exports = dirname => ({
   optimization: {
     minimizer: [
       new TerserPlugin({
-        cache: true, sourceMap: true
+        cache: true,
+        sourceMap: true,
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
@@ -36,6 +38,10 @@ module.exports = dirname => ({
           sizes: [192, 512], // multiple sizes
         },
       ],
+    }),
+    new ImageminPlugin({
+      pngquant: { quality: '50' },
+      plugins: [imageminMozjpeg({ quality: '75' })],
     }),
   ],
   module: {

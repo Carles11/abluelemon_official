@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-const Container = styled.article`
+import { useScrollPosition, useWindowSize } from './Hooks';
+
+const Container = styled.article.attrs({
+  style: props => ({
+    transitionDelay: 200 * props.order + 'ms',
+  }),
+})`
   width: 100%;
   position: relative;
   background: #2a2e3e;
   padding: 6rem 1.5rem 1.5rem;
+  margin-top: 25px;
   margin-bottom: 1rem;
   box-sizing: border-box;
-
+  opacity: 0;
+  transition: opacity 500ms ease-in-out, margin-top 500ms ease-in-out;
 
   &:nth-child(2) {
     margin-left: 2rem;
     margin-right: 2rem;
   }
 
-  @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    width: 49%; 
+  @media only screen and (min-width: 769px) and (max-width: 1224px) {
+    width: 49%;
     margin-bottom: 8rem;
 
     &:nth-child(2) {
@@ -31,9 +39,15 @@ const Container = styled.article`
     &:nth-child(2) {
       margin-left: 0;
       margin-right: 0;
-
     }
   }
+
+  ${props =>
+    props.render &&
+    css`
+      opacity: 1;
+      margin-top: 0;
+    `}
 `;
 
 const Image = styled.img`
@@ -66,11 +80,24 @@ const Text = styled.p`
 `;
 
 const Box = props => {
-  const { name, description, img, mail, role } = props;
+  const [render, setRender] = useState(false);
+  const { h: height } = useWindowSize();
+  const scroll = useScrollPosition();
+  const { name, description, img, mail, role, order } = props;
+
+  useEffect(() => {
+    if (!render && scroll > height / 1.5) {
+      setRender(true);
+    }
+
+    if (render && scroll < height / 1.5) {
+      setRender(false);
+    }
+  });
 
   return (
-    <Container>
-      <Image src={img} alt={name} />
+    <Container render={render} order={order}>
+      <Image data-src={img} className='lazyload' alt={name} />
       <Title>{name}</Title>
       <Subtitle>{role}</Subtitle>
       <Text>{description}</Text>

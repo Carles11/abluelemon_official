@@ -20,10 +20,10 @@ const Image = styled.div.attrs({
   }),
 })`
   position: absolute;
-  width: 103%;
+  width: 100%;
   height: 100%;
   top: 0;
-  left: -1.5%;
+  left: 0;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;

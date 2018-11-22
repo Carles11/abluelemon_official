@@ -13,8 +13,7 @@ const AboutSection = Loadable({
 });
 
 const Footer = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: 'footer' */ '../components/Footer'),
+  loader: () => import(/* webpackChunkName: 'footer' */ '../components/Footer'),
   loading: Loader,
 });
 
@@ -24,7 +23,7 @@ const Landing = () => {
   useEffect(() => {
     if (!lazy) {
       AboutSection.preload();
-      Footer.preload()
+      Footer.preload();
       setLazy(true);
     }
   });
@@ -34,7 +33,7 @@ const Landing = () => {
       <Title />
       <Background url={url} />
       {!!lazy && <AboutSection />}
-      {!!lazy && <Footer order={2} />}
+      {!!lazy && <Footer />}
     </Fragment>
   );
 };

@@ -44,7 +44,11 @@ h3 {
   font-size: calc(20px + (25 - 17) * ((100vw - 600px) / (1600 - 900)));
 }
 
-a{
+a {
   color: #15b6cd;
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

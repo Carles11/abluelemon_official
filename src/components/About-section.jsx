@@ -71,7 +71,8 @@ const Title = styled.h3`
   margin-top: 25px;
   text-align: center;
   opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1),
+    margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
 
   ${props =>
     props.render &&
@@ -89,8 +90,8 @@ const SectionTitle = styled.h2`
   color: #15b6cd;
   margin: 4.5rem 0 1rem;
   opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
-
+  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1),
+    margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
 
   ${props =>
     props.render &&
@@ -105,8 +106,8 @@ const Boxes = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3rem 0 0;
-  padding: 8rem 0 0;
+  margin: 3rem 0 5rem;
+  padding: 10rem 0 0;
   border-top: 2px dotted #30354c;
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
@@ -116,6 +117,7 @@ const Boxes = styled.div`
 
   @media only screen and (max-width: 768px) {
     flex-direction: column;
+    margin-bottom: 1rem;
   }
 `;
 

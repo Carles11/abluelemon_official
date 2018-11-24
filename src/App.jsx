@@ -2,13 +2,12 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import 'lazysizes';
 
-
 import Header from './components/Header';
 import Routes from './Routes';
-import SmoothScroll from './helpers/smoothScroll';
+import SmoothScroll from './utils/smoothScroll';
 
 const App = () => {
-  SmoothScroll(document, 90, 12);
+  SmoothScroll(document, 90, 16);
 
   return (
     <React.Fragment>

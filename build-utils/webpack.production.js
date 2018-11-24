@@ -29,8 +29,8 @@ module.exports = dirname => ({
       short_name: 'aBlueLemon',
       description: 'A Blue Lemon Web App!',
       background_color: '#ffffff',
-      theme_color: '#333333',
       crossorigin: 'use-credentials',
+      theme_color: '#262938',
       inject: true,
       icons: [
         {

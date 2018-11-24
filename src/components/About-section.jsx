@@ -1,43 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
+import Loader from './Loader';
 import Box from './Box';
 import { useWindowSize, useScrollPosition } from './Hooks';
-import img1 from '../assets/image/about_carles.jpg';
-import img2 from '../assets/image/about_xavi.jpg';
-import img3 from '../assets/image/about_hassan.jpg';
+import config from '../config';
 
-// @todo API REQUEST
-const data = [
-  {
-    _id: 1,
-    name: 'Carles Del Río',
-    description:
-      'Carles brings an over 12 years professional experience in organizing and technical-production of events. Carles is Eventmanager (IHK Hamburg, Germany) and Dipl. Audio Engineer (SAE Frankfurt, Germany) and works today as such on live events and festivals in Germany and surrounding European countries. He takes care of all production logistics for the Company as Head of Production.',
-    img: img1,
-    email: 'carles@gmail.com',
-    role: 'CTO & FOUNDER',
-  },
-
-  {
-    _id: 2,
-    name: 'Xavi Del Río',
-    description:
-      'Carles brings an over 12 years professional experience in organizing and technical-production of events. Carles is Eventmanager (IHK Hamburg, Germany) and Dipl. Audio Engineer (SAE Frankfurt, Germany) and works today as such on live events and festivals in Germany and surrounding European countries. He takes care of all production logistics for the Company as Head of Production.',
-    img: img2,
-    email: 'carles@gmail.com',
-    role: 'CEO & FOUNDER',
-  },
-  {
-    _id: 3,
-    name: 'Hassan Mokdad',
-    description:
-      'Carles brings an over 12 years professional experience in organizing and technical-production of events. Carles is Eventmanager (IHK Hamburg, Germany) and Dipl. Audio Engineer (SAE Frankfurt, Germany) and works today as such on live events and festivals in Germany and surrounding European countries. He takes care of all production logistics for the Company as Head of Production.',
-    img: img3,
-    email: 'carles@gmail.com',
-    role: 'CTO & FOUNDER',
-  },
-];
+const { API_URL, fetch_options } = config;
 
 const Container = styled.section`
   position: relative;
@@ -122,9 +91,30 @@ const Boxes = styled.div`
 `;
 
 const AboutSection = () => {
+  const [data, setData] = useState([]);
   const [render, setRender] = useState(false);
   const { h: height } = useWindowSize();
   const scroll = useScrollPosition();
+
+  function fetchData() {
+    
+    fetch(`${API_URL}users`, fetch_options.get)
+      .then(res => res.json())
+      .then(res => {
+        if (res.success) {
+          setData(res.data);
+        } else {
+          setData([]);
+        }
+      })
+      .catch(err => setData([]));
+  };
+
+  useEffect(() => {
+    if (data && !data.lenght) {
+      fetchData();
+    }
+  }, []);
 
   useEffect(() => {
     if (!render && scroll > height / 4) {
@@ -135,6 +125,8 @@ const AboutSection = () => {
       setRender(false);
     }
   });
+
+  if (data && !data.length) return <Loader />;
 
   return (
     <Container position={height}>

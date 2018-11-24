@@ -60,15 +60,14 @@ const IconMenu = props => {
 
   useEffect(() => {
     if (!props.visible && active) {
-      setActive(false)
+      setActive(false);
     }
-  })
+  });
 
   return (
     <ButtonIconMenu
       className={className}
       onClick={handleClick}
-      role='button'
       arial-label='show/hide menu'>
       <Bar1 active={active} className='bars' />
       <Bar2 active={active} className='bars' />
@@ -80,7 +79,7 @@ const IconMenu = props => {
 IconMenu.propTypes = {
   className: PropTypes.string,
   handleIconClick: PropTypes.func.isRequired,
-  visible: PropTypes.bool.isRequired
+  visible: PropTypes.bool.isRequired,
 };
 
 export default IconMenu;

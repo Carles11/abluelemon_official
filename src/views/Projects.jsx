@@ -1,18 +1,50 @@
-import React from 'react'
-import Helmet from 'react-helmet'
+import React, { useState, useEffect } from 'react';
+import Helmet from 'react-helmet';
+import styled from 'styled-components';
+import Loadable from 'react-loadable';
 
-const Projects = () => (
-  <section>
-    <Helmet 
-      title="Projects" 
-      meta={[
-        { name: "description", content: "Projects" },
-      ]}
-    />
-  Projects
-  </section>
-)
-  
+import Loader from '../components/Loader';
 
+const ProjectList = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'project-list' */ '../components/Project-list'),
+  loading: Loader,
+});
 
-export default Projects
+const Footer = Loadable({
+  loader: () => import(/* webpackChunkName: 'footer' */ '../components/Footer'),
+  loading: Loader,
+});
+
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Projects = () => {
+  const [lazy, setLazy] = useState(false);
+
+  useEffect(() => {
+    if (!lazy) {
+      Footer.preload();
+      ProjectList.preload();
+
+      setLazy(true);
+    }
+  });
+
+  return (
+    <Container>
+      <Helmet
+        title='Projects'
+        meta={[{ name: 'description', content: 'Projects' }]}
+      />
+      {!!lazy && <ProjectList />}
+      {!!lazy && <Footer />}
+    </Container>
+  );
+};
+
+export default Projects;

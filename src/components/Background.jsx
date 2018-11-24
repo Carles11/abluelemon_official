@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { useScrollPosition } from './Hooks';
+import Title from '../components/Title';
 
 const Figure = styled.figure`
   position: fixed;
@@ -41,6 +42,7 @@ const Background = props => {
   const [render, setRender] = useState(false);
   const scroll = useScrollPosition();
   const position = Math.floor(scroll / 10);
+  const { url, text} = props
 
   useEffect(() => {
     if (!render) {
@@ -49,17 +51,21 @@ const Background = props => {
   });
 
   return (
-    <Figure>
-      <Image
-        render={render}
-        position={position}
-        style={{ backgroundImage: `url(${props.url})` }}
-      />
-    </Figure>
+    <Fragment>
+      <Title text={text} />
+      <Figure>
+        <Image
+          render={render}
+          position={position}
+          style={{ backgroundImage: `url(${url})` }}
+        />
+      </Figure>
+    </Fragment>
   );
 };
 
 Background.propTypes = {
+  text: PropTypes.string,
   url: PropTypes.string.isRequired,
 };
 

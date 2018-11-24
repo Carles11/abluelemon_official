@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types'
 
 import { useWindowSize, useScrollPosition } from './Hooks';
 
@@ -58,11 +59,12 @@ const Subtitle = styled.h2`
   margin: -5px;
 `;
 
-const Title = () => {
+const Title = props => {
   const [animate, setAnimate] = useState(false);
   const [initial, setInitial] = useState(false);
   const { h } = useWindowSize();
   const scroll = useScrollPosition();
+  const { text } = props;
 
   useEffect(() => {
     if (!animate && scroll < 400) {
@@ -77,13 +79,23 @@ const Title = () => {
 
   return (
     <TitleWrapper size={h}>
-      <TitleItem animate={animate} initial={initial}>
-        At <TitleSpan>A blue lemon</TitleSpan> we create each one of our
-        projects to showcase the unique flavour and culture of the community.
-      </TitleItem>
-      <Subtitle />
+      {!!text && (
+        <TitleItem animate={animate} initial={initial}>
+          {text}
+        </TitleItem>
+      )}
+      {!text && (
+        <TitleItem animate={animate} initial={initial}>
+          At <TitleSpan>A blue lemon</TitleSpan> we create each one of our
+          projects to showcase the unique flavour and culture of the community.
+        </TitleItem>
+      )}
     </TitleWrapper>
   );
 };
+
+Title.propTypes = {
+  text: PropTypes.string
+}
 
 export default Title;

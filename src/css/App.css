@@ -1,21 +1,8 @@
-@font-face {
-  font-family: Bold;
-  font-display: block;
-  src: local('Bold'), url(../assets/font/Volkhov-Regular.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: Regular;
-  font-display: block;
-  src: local('Regular'),
-    url(../assets/font/OpenSans-Light.ttf) format('truetype');
-}
-
 body {
   position: relative;
-  font-family: Regular, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: calc(16px + (18 - 14) * ((100vw - 300px) / (1600 - 100)));
-  font-family: Regular, serif;
+  font-weight: 100;
   color: #ffffff;
   background: #262938;
   margin: 0;
@@ -26,7 +13,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: Bold, sans-serif;
+  font-family: 'Volkhov', serif;
   font-display: block;
   font-weight: 100;
   line-height: 1.2;

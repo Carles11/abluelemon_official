@@ -1,17 +1,26 @@
 const config = {
   env: process.env.NODE_ENV || 'development',
-}
+  fetch_options: {
+    get: {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+      mode: 'cors',
+    },
+  },
+};
 
-let envConfig
+let envConfig;
 
 try {
   if (config.env === 'test') {
-    config.env = 'testing'
+    config.env = 'testing';
   }
   // eslint-disable-next-line
-  envConfig = require(`./${config.env}`).default
+  envConfig = require(`./${config.env}`).default;
 } catch (e) {
-  envConfig = {}
+  envConfig = {};
 }
 
-export default Object.assign({}, config, envConfig)
+export default Object.assign({}, config, envConfig);

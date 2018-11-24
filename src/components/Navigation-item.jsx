@@ -14,6 +14,7 @@ const itemStyles = css`
 
   &:hover {
     color: #15b6cd;
+    text-decoration: none;
   }
 
   @media only screen and (max-width: 649px) {

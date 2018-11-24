@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
 
 import logo from '../assets/image/logo.png';
 
@@ -22,10 +23,25 @@ const LoaderImg = styled.img`
   animation: ${AnimateLoader} 0.6s infinite ease-in-out;
 `;
 
-const Loader = props => (
-  <LoaderWrapper>
-    <LoaderImg src={logo} alt='Loader icon' role='loader' />
-  </LoaderWrapper>
-);
+const Message = styled.p`
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+`;
+
+const Loader = props => {
+  const { msg } = props;
+
+  return (
+    <LoaderWrapper>
+      <LoaderImg src={logo} alt='Loader icon' role='loader' />
+      {!!msg && <Message>{msg}</Message>}
+    </LoaderWrapper>
+  );
+};
+
+Loader.propTypes = {
+  msg: PropTypes.string,
+};
 
 export default Loader;

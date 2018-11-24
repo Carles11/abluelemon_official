@@ -3,7 +3,6 @@ import Loadable from 'react-loadable';
 
 import Loader from '../components/Loader';
 import url from '../assets/image/background.jpg';
-import Title from '../components/Title';
 import Background from '../components/Background';
 
 const AboutSection = Loadable({
@@ -30,8 +29,7 @@ const Landing = () => {
 
   return (
     <Fragment>
-      <Title />
-      <Background url={url} />
+      <Background url={url}/>
       {!!lazy && <AboutSection />}
       {!!lazy && <Footer />}
     </Fragment>

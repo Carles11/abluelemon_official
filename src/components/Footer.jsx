@@ -20,6 +20,10 @@ const Container = styled.footer`
   transition: top 0.5s ease-out;
   z-index: 1;
   border-top: 1px dotted #1b1c23;
+
+  @media only screen and (max-width: 768px) {
+    padding: 3rem 5%;
+  }
 `;
 
 const Copy = styled.div`

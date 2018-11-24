@@ -1,3 +1,3 @@
 export default {
-  API_URL: process.env.API_URL || 'http://localhost:4000/api/abluelemon/',
+  API_URL: process.env.API_URL,
 }

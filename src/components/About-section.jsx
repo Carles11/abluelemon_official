@@ -5,7 +5,6 @@ import Loader from './Loader';
 import Box from './Box';
 import { useWindowSize, useScrollPosition } from './Hooks';
 import config from '../config';
-import SmoothScroll from '../utils/smoothScroll';
 
 const { API_URL, fetch_options } = config;
 
@@ -103,7 +102,6 @@ const AboutSection = () => {
       .then(res => {
         if (res.success) {
           setData(res.data);
-          SmoothScroll(document, 90, 16);
         } else {
           setData([]);
         }
@@ -131,7 +129,7 @@ const AboutSection = () => {
   if (data && !data.length) return <Loader />;
 
   return (
-    <Container position={height}>
+    <Container id='aboutContent' position={height}>
       <Title render={render}>About us</Title>
 
       <Text render={render}>

@@ -4,8 +4,11 @@ import 'lazysizes';
 
 import Header from './components/Header';
 import Routes from './Routes';
+import SmoothScroll from './utils/smoothScroll';
 
 const App = () => {
+  SmoothScroll(document, 90, 16);
+
   return (
     <Fragment>
       <Helmet

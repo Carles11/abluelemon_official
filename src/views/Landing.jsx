@@ -1,15 +1,21 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Loadable from 'react-loadable';
 
 import Loader from '../components/Loader';
 import url from '../assets/image/background.jpg';
 import Background from '../components/Background';
+import { useWindowSize } from '../components/Hooks';
 
 const AboutSection = Loadable({
   loader: () =>
     import(/* webpackChunkName: 'about-section' */ '../components/About-section'),
   loading: Loader,
 });
+
+const LazyWrapper = styled.div`
+  min-height: ${props => props.height};
+`;
 
 const Footer = Loadable({
   loader: () => import(/* webpackChunkName: 'footer' */ '../components/Footer'),
@@ -18,6 +24,7 @@ const Footer = Loadable({
 
 const Landing = () => {
   const [lazy, setLazy] = useState(false);
+  const { h: height } = useWindowSize();
 
   useEffect(
     () => {
@@ -31,7 +38,7 @@ const Landing = () => {
   return (
     <Fragment>
       <Background url={url} />
-      {!!lazy && <AboutSection />}
+      <LazyWrapper height={height}>{!!lazy && <AboutSection />}</LazyWrapper>
       {!!lazy && <Footer />}
     </Fragment>
   );

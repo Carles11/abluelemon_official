@@ -13,14 +13,16 @@ const AboutSection = Loadable({
   loading: Loader,
 });
 
-const LazyWrapper = styled.div`
-  min-height: ${props => props.height};
-`;
-
 const Footer = Loadable({
   loader: () => import(/* webpackChunkName: 'footer' */ '../components/Footer'),
   loading: Loader,
 });
+
+const LazyWrapper = styled.div`
+  position: relative;
+  margin-top: ${props => props.size + 'px'};
+  min-height: ${props => props.size + 'px'};
+`;
 
 const Landing = () => {
   const [lazy, setLazy] = useState(false);
@@ -38,7 +40,7 @@ const Landing = () => {
   return (
     <Fragment>
       <Background url={url} />
-      <LazyWrapper height={height}>{!!lazy && <AboutSection />}</LazyWrapper>
+      <LazyWrapper size={height}>{!!lazy && <AboutSection />}</LazyWrapper>
       {!!lazy && <Footer />}
     </Fragment>
   );

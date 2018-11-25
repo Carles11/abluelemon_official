@@ -8,8 +8,6 @@ import './css/App.css';
 
 const elem = document.querySelector('.root');
 
-console.log(config);
-
 const wrapApp = AppComponent => (
   <Router>
     <AppComponent />

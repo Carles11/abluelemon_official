@@ -72,7 +72,7 @@ const Header = () => {
   );
 
   return (
-    <Container>
+    <Container id="header">
       <LogoLink to='/'>
         <Logo src={logo} alt='Abluelemon logo' />
       </LogoLink>

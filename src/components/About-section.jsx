@@ -92,7 +92,7 @@ const Boxes = styled.div`
 
 const AboutSection = () => {
   const [data, setData] = useState([]);
-  const [render, setRender] = useState(true);
+  const [render, setRender] = useState(false);
   const { h: height } = useWindowSize();
   const scroll = useScrollPosition();
 
@@ -102,6 +102,7 @@ const AboutSection = () => {
       .then(res => {
         if (res.success) {
           setData(res.data);
+          setRender(true)
         } else {
           setData([]);
         }

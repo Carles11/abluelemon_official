@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { getSlug } from '../utils/helpers'
+import { getSlug } from '../utils/helpers';
 
 const Container = styled.article.attrs({
   style: props => ({
@@ -83,13 +83,15 @@ const Title = styled.h2`
 const ProjectItem = props => {
   const [render, setRender] = useState(false);
   const { order, title, images, _id } = props;
-  const slug = getSlug(`${title} ${_id}`)
+  const slug = getSlug(`${title} ${_id}`);
 
-  useEffect(() => {
-    if (!render) {
+  useEffect(
+    () => {
       setRender(true);
-    }
-  });
+    },
+    [render],
+  );
+
   return (
     <Container render={render} order={order}>
       <Figure to={`/projects/${slug}`}>

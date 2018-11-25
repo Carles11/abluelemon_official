@@ -32,7 +32,22 @@ const Container = styled.section`
   }
 `;
 
-const Title = styled.h3`
+const Title = styled.h2`
+  color: #15b6cd;
+  margin: 4.5rem 0 1rem;
+  opacity: 0;
+  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1),
+    margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
+
+  ${props =>
+    props.render &&
+    css`
+      opacity: 1;
+      margin-top: 3rem;
+    `}
+`;
+
+const Text = styled.h3`
   position: relative;
   width: 100%;
   display: flex;
@@ -53,21 +68,6 @@ const Title = styled.h3`
   @media only screen and (max-width: 1024px) {
     width: 100%;
   }
-`;
-
-const SectionTitle = styled.h2`
-  color: #15b6cd;
-  margin: 4.5rem 0 1rem;
-  opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1),
-    margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
-
-  ${props =>
-    props.render &&
-    css`
-      opacity: 1;
-      margin-top: 3rem;
-    `}
 `;
 
 const Boxes = styled.div`
@@ -97,7 +97,6 @@ const AboutSection = () => {
   const scroll = useScrollPosition();
 
   function fetchData() {
-    
     fetch(`${API_URL}users`, fetch_options.get)
       .then(res => res.json())
       .then(res => {
@@ -108,34 +107,36 @@ const AboutSection = () => {
         }
       })
       .catch(err => setData([]));
-  };
+  }
 
   useEffect(() => {
-    if (data && !data.lenght) {
-      fetchData();
-    }
+    fetchData();
   }, []);
 
-  useEffect(() => {
-    if (!render && scroll > height / 4) {
-      setRender(true);
-    }
+  useEffect(
+    () => {
+      if (scroll > height / 4) {
+        setRender(true);
+      }
 
-    if (render && scroll < height / 4) {
-      setRender(false);
-    }
-  });
+      if (scroll < height / 4) {
+        setRender(false);
+      }
+    },
+    [scroll],
+  );
 
   if (data && !data.length) return <Loader />;
 
   return (
     <Container position={height}>
-      <SectionTitle render={render}>About us</SectionTitle>
-      <Title render={render}>
+      <Title render={render}>About us</Title>
+
+      <Text render={render}>
         We achieve a positive economic and social impact of our events generated
         for the surrounding areas, while also providing visibility for the
         surrounding businesses.
-      </Title>
+      </Text>
 
       <Boxes>
         {data.map((a, i) => (

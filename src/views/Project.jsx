@@ -33,19 +33,23 @@ const Project = props => {
       .catch(err => setData({}));
   }
 
-  useEffect(() => {
-    if (Object.keys(data).length === 0) {
-      const id = getLastStr(pathname, '-');
-      fetchData(id);
-    }
-  }, {});
+  useEffect(
+    () => {
+      if (Object.keys(data).length === 0) {
+        const id = getLastStr(pathname, '-');
+        fetchData(id);
+      }
+    },
+    [],
+  );
 
-  useEffect(() => {
-    if (!lazy) {
+  useEffect(
+    () => {
       Footer.preload();
       setLazy(true);
-    }
-  });
+    },
+    [lazy],
+  );
 
   if (Object.keys(data).length === 0) return <Loader msg={'Loading project'} />;
 

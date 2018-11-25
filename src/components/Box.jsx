@@ -85,15 +85,18 @@ const Box = props => {
   const scroll = useScrollPosition();
   const { name, description, img, mail, role, order } = props;
 
-  useEffect(() => {
-    if (!render && scroll > height / 1.5) {
-      setRender(true);
-    }
+  useEffect(
+    () => {
+      if (scroll > height / 1.5) {
+        setRender(true);
+      }
 
-    if (render && scroll < height / 1.5) {
-      setRender(false);
-    }
-  });
+      if (scroll < height / 1.5) {
+        setRender(false);
+      }
+    },
+    [scroll],
+  );
 
   return (
     <Container render={render} order={order}>

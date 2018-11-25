@@ -26,14 +26,14 @@ const Container = styled.div`
 const Projects = () => {
   const [lazy, setLazy] = useState(false);
 
-  useEffect(() => {
-    if (!lazy) {
+  useEffect(
+    () => {
       Footer.preload();
       ProjectList.preload();
-
       setLazy(true);
-    }
-  });
+    },
+    [lazy],
+  );
 
   return (
     <Container>

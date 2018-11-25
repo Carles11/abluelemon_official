@@ -75,7 +75,7 @@ const Title = props => {
       setInitial(true);
       setAnimate(false);
     }
-  });
+  }, [scroll]);
 
   return (
     <TitleWrapper size={h}>

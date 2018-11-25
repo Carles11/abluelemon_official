@@ -42,13 +42,14 @@ const Background = props => {
   const [render, setRender] = useState(false);
   const scroll = useScrollPosition();
   const position = Math.floor(scroll / 10);
-  const { url, text} = props
+  const { url, text } = props;
 
-  useEffect(() => {
-    if (!render) {
+  useEffect(
+    () => {
       setRender(true);
-    }
-  });
+    },
+    [render],
+  );
 
   return (
     <Fragment>

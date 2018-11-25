@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import 'lazysizes';
 
@@ -10,7 +10,7 @@ const App = () => {
   SmoothScroll(document, 90, 16);
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Helmet
         titleTemplate={`%s | A BLUE LEMON`}
         defaultTitle='A BLUE LEMON PRODUCTIONS'>
@@ -22,7 +22,7 @@ const App = () => {
       </Helmet>
       <Header />
       <Routes />
-    </React.Fragment>
+    </Fragment>
   );
 };
 

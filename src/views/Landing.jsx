@@ -19,17 +19,18 @@ const Footer = Loadable({
 const Landing = () => {
   const [lazy, setLazy] = useState(false);
 
-  useEffect(() => {
-    if (!lazy) {
+  useEffect(
+    () => {
       AboutSection.preload();
       Footer.preload();
       setLazy(true);
-    }
-  });
+    },
+    [lazy],
+  );
 
   return (
     <Fragment>
-      <Background url={url}/>
+      <Background url={url} />
       {!!lazy && <AboutSection />}
       {!!lazy && <Footer />}
     </Fragment>

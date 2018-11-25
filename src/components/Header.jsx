@@ -44,26 +44,32 @@ const Background = styled.div`
   height: 73px;
   z-index: 999;
   opacity: 0.6;
-  transition: top 600ms cubic-bezier(0.19, 1, 0.22, 1), opacity 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: top 600ms cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 600ms cubic-bezier(0.19, 1, 0.22, 1);
 
-  ${props => props.animate && css`
-    top: 0;
-    opacity: .9;
-  `}
+  ${props =>
+    props.animate &&
+    css`
+      top: 0;
+      opacity: 0.9;
+    `}
 `;
 
 const Header = () => {
-  const [animate, setAnimate] = useState(false)
+  const [animate, setAnimate] = useState(false);
   const scroll = useScrollPosition();
 
-  useEffect(() => {
-    if (!animate && scroll > 350) {
-      setAnimate(true)
-    } 
-    if (animate && scroll < 350) {
-      setAnimate(false)
-    }
-  })
+  useEffect(
+    () => {
+      if (scroll > 350) {
+        setAnimate(true);
+      }
+      if (scroll < 350) {
+        setAnimate(false);
+      }
+    },
+    [scroll],
+  );
 
   return (
     <Container>

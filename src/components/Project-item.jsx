@@ -28,7 +28,7 @@ const Container = styled.article.attrs({
 
   @media only screen and (min-width: 769px) and (max-width: 1224px) {
     width: 49%;
-    margin-bottom: 8rem;
+    margin-bottom: 3rem;
     padding: 1.5rem;
 
     &:nth-child(2) {
@@ -42,7 +42,6 @@ const Container = styled.article.attrs({
     margin-bottom: 3rem;
     padding: 1.5rem;
     min-height: 500px;
-
 
     &:nth-child(2) {
       margin-left: 0;

@@ -22,6 +22,8 @@ const Container = styled.section`
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     padding: 5%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   @media only screen and (max-width: 768px) {

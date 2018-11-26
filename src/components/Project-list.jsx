@@ -12,7 +12,8 @@ const Container = styled.section`
   position: relative;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: center;
   min-height: ${props => props.position + 'px'};
   padding: 3% 10% 1rem;

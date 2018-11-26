@@ -29,7 +29,7 @@ const Container = styled.section`
 
   @media only screen and (max-width: 768px) {
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1rem;
   }
 `;
 

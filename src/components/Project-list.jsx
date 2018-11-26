@@ -57,9 +57,11 @@ const ProjectList = props => {
 
   return (
     <Container position={height}>
-      {data.map((d, i) => (
-        <ProjectItem key={d._id} order={i + 1} {...d} />
-      ))}
+      {data
+        .sort((a, b) => (a.year > b.year ? -1 : 1))
+        .map((d, i) => (
+          <ProjectItem key={d._id} order={i + 1} {...d} />
+        ))}
     </Container>
   );
 };

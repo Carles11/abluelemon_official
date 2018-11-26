@@ -97,7 +97,7 @@ const Title = styled.h4`
   margin-bottom: 0.6rem;
 `;
 
-const Text = styled.p`
+const Text = styled.address`
   color: white;
   font-size: 0.8rem;
   margin-top: 0;

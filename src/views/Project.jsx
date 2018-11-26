@@ -33,15 +33,12 @@ const Project = props => {
       .catch(err => setData({}));
   }
 
-  useEffect(
-    () => {
-      if (Object.keys(data).length === 0) {
-        const id = getLastStr(pathname, '-');
-        fetchData(id);
-      }
-    },
-    [],
-  );
+  useEffect(() => {
+    if (Object.keys(data).length === 0) {
+      const id = getLastStr(pathname, '-');
+      fetchData(id);
+    }
+  }, []);
 
   useEffect(
     () => {
@@ -62,7 +59,7 @@ const Project = props => {
           { property: 'og:title', content: data.title },
         ]}
       />
-      <Background url={data.images[0]} text={data.title} />
+      <Background url={data.images[1]} text={data.title} />
       <ProjectBody />
       {!!lazy && <Footer />}
     </section>

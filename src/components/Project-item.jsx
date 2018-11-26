@@ -16,7 +16,7 @@ const Container = styled.article.attrs({
   position: relative;
   background: #2a2e3e;
   padding: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2%;
   box-sizing: border-box;
   opacity: 0;
   transition: opacity 500ms ease-in-out, margin-top 500ms ease-in-out;
@@ -27,13 +27,18 @@ const Container = styled.article.attrs({
   }
 
   @media only screen and (min-width: 769px) and (max-width: 1224px) {
-    width: 49%;
-    margin-bottom: 3rem;
+    width: 48%;
+    margin-bottom: 2%;
     padding: 1.5rem;
 
     &:nth-child(2) {
+      margin-left: 0;
       margin-right: 0;
-      margin-left: 2%;
+    }
+
+    &:nth-child(2n + 1) {
+      margin-right: 2%;
+      margin-left: 0;
     }
   }
 

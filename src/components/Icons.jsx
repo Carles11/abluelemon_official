@@ -82,4 +82,8 @@ IconMenu.propTypes = {
   visible: PropTypes.bool.isRequired,
 };
 
+const IconArrowDown = () => {
+  
+}
+
 export default IconMenu;

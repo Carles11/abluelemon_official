@@ -47,8 +47,8 @@ const Copy = styled.div`
     }
 
     & .high {
+      background: transparent;
       color: #15b6cd;
-      padding: 0.1rem 0.5rem;
     }
   }
 
@@ -120,7 +120,7 @@ const Footer = () => {
           />
         </figure>
         <p className='txt'>
-          Copyright &copy; <mark className='high'>{LOCALES.APP_NAME}</mark>,{' '}
+          Copyright &copy;<mark className='high'>{LOCALES.APP_NAME}</mark>,{' '}
           {date}.
         </p>
       </Copy>

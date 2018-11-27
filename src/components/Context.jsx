@@ -1,6 +1,4 @@
 import React, { createContext } from 'react';
-import LOCALES from '../utils/locales/en.json';
+import LOCALES from '../utils/locales.json';
 
-const LocalesContext = createContext(LOCALES);
-
-export { LocalesContext };
+export const LocalesContext = createContext(LOCALES.EN);

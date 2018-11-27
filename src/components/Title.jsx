@@ -30,6 +30,7 @@ const TitleItem = styled.h1`
   color: #ffffff;
   margin: 0;
   text-shadow: 1px 1px 1px #666;
+  text-align: center;
   transform: translateY(10%);
   opacity: 0;
   transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1) 0.2s,

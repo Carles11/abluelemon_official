@@ -100,7 +100,9 @@ const AboutSection = () => {
       />
 
       <Boxes>
-        {data.map((a, i) => (
+        {data
+        .sort((a,b) => a._id > b._id ? -1 : 1)
+        .map((a, i) => (
           <Box
             order={i + 1}
             key={a._id}

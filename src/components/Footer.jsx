@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import logo from '../assets/image/logo_tiny.png';
+import { LocalesContext } from './Context';
 
 const nav_data = [
   { url: '/', label: 'HOME' },
@@ -46,7 +47,6 @@ const Copy = styled.div`
     }
 
     & .high {
-      background: #262938;
       color: #15b6cd;
       padding: 0.1rem 0.5rem;
     }
@@ -106,6 +106,7 @@ const Text = styled.address`
 
 const Footer = () => {
   const date = new Date().getFullYear();
+  const LOCALES = useContext(LocalesContext);
 
   return (
     <Container>
@@ -119,12 +120,13 @@ const Footer = () => {
           />
         </figure>
         <p className='txt'>
-          Copyright &copy; <mark className='high'>A blue lemon</mark>, {date}.
+          Copyright &copy; <mark className='high'>{LOCALES.APP_NAME}</mark>,{' '}
+          {date}.
         </p>
       </Copy>
       <Section>
         <Nav>
-          <Title>Navigation</Title>
+          <Title>{LOCALES.FOOTER_NAVIGATION}</Title>
           {nav_data.map(n => (
             <LinkNav key={n.label} to={n.url}>
               {n.label}
@@ -132,12 +134,14 @@ const Footer = () => {
           ))}
         </Nav>
         <Contact>
-          <Title>Germany office </Title>
+          <Title>{LOCALES.FOOTER_OFFICE}</Title>
           <Text>
-            Elbestrasse 15, 60329 – Frankfurt am Main, Germany <br />
-            Telephone: +49 1782871785 <br />
-            E-Mail:{' '}
-            <a href='mailto:carles@abluelemon.com'>carles@abluelemon.com</a>
+            {LOCALES.FOOTER_ADDRESS}
+            <br />
+            {LOCALES.FOOTER_PHONE}
+            <br />
+            E-Mail:
+            <a href='mailto:carles@abluelemon.com'> carles@abluelemon.com</a>
           </Text>
         </Contact>
       </Section>

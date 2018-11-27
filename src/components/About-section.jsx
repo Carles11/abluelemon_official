@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useState, useEffect, useContext } from 'react';
+import styled from 'styled-components';
 
+import TitleSection from './Title-section';
 import Loader from './Loader';
 import Box from './Box';
 import { useWindowSize, useScrollPosition } from './Hooks';
 import config from '../config';
+import { LocalesContext } from './Context'
 
 const { API_URL, fetch_options } = config;
 
@@ -32,52 +34,12 @@ const Container = styled.section`
   }
 `;
 
-const Title = styled.h2`
-  color: #15b6cd;
-  margin: 4.5rem 0 1rem;
-  opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1),
-    margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
-
-  ${props =>
-    props.render &&
-    css`
-      opacity: 1;
-      margin-top: 3rem;
-    `}
-`;
-
-const Text = styled.h3`
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 25px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1),
-    margin-top 800ms cubic-bezier(0.19, 1, 0.22, 1);
-
-  ${props =>
-    props.render &&
-    css`
-      opacity: 1;
-      margin-top: 0;
-    `}
-
-  @media only screen and (max-width: 1024px) {
-    width: 100%;
-  }
-`;
-
 const Boxes = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3rem 0 5rem;
-  padding: 10rem 0 0;
-  border-top: 2px dotted #30354c;
+  margin: 4rem 0 5rem;
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     flex-wrap: wrap;
@@ -93,6 +55,7 @@ const Boxes = styled.div`
 const AboutSection = () => {
   const [data, setData] = useState([]);
   const [render, setRender] = useState(false);
+  const LOCALES = useContext(LocalesContext)
   const { h: height } = useWindowSize();
   const scroll = useScrollPosition();
 
@@ -130,13 +93,11 @@ const AboutSection = () => {
 
   return (
     <Container id='aboutContent' position={height}>
-      <Title render={render}>About us</Title>
-
-      <Text render={render}>
-        We achieve a positive economic and social impact of our events generated
-        for the surrounding areas, while also providing visibility for the
-        surrounding businesses.
-      </Text>
+      <TitleSection
+        title={LOCALES.ABOUT_TITLE}
+        text={LOCALES.ABOUT_TEXT}
+        show={render}
+      />
 
       <Boxes>
         {data.map((a, i) => (

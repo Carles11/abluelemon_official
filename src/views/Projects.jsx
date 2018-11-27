@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Helmet from 'react-helmet';
-import styled from 'styled-components';
 import Loadable from 'react-loadable';
 
 import Loader from '../components/Loader';
@@ -16,13 +15,6 @@ const Footer = Loadable({
   loading: Loader,
 });
 
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
 const Projects = () => {
   const [lazy, setLazy] = useState(false);
 
@@ -36,14 +28,14 @@ const Projects = () => {
   );
 
   return (
-    <Container>
+    <Fragment>
       <Helmet
         title='Projects'
         meta={[{ name: 'description', content: 'Projects' }]}
       />
       {!!lazy && <ProjectList />}
       {!!lazy && <Footer />}
-    </Container>
+    </Fragment>
   );
 };
 

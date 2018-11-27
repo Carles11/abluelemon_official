@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Navigation from './Navigation';
 import logo from '../assets/image/logo_tiny.png';
 import { useScrollPosition } from './Hooks';
+import { LocalesContext } from './Context'
 
 const Container = styled.header`
   position: fixed;
@@ -57,6 +58,7 @@ const Background = styled.div`
 
 const Header = () => {
   const [animate, setAnimate] = useState(false);
+  const LOCALES = useContext(LocalesContext)
   const scroll = useScrollPosition();
 
   useEffect(
@@ -74,7 +76,7 @@ const Header = () => {
   return (
     <Container id="header">
       <LogoLink to='/'>
-        <Logo src={logo} alt='Abluelemon logo' />
+        <Logo src={logo} alt={LOCALES.APP_NAME} />
       </LogoLink>
       <Navigation />
       <Background animate={animate} />

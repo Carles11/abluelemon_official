@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import { useWindowSize, useScrollPosition } from './Hooks';
+import { LocalesContext } from './Context';
 
 const TitleWrapper = styled.section`
   position: fixed;
@@ -62,20 +63,24 @@ const Subtitle = styled.h2`
 const Title = props => {
   const [animate, setAnimate] = useState(false);
   const [initial, setInitial] = useState(false);
+  const LOCALES = useContext(LocalesContext);
   const { h } = useWindowSize();
   const scroll = useScrollPosition();
   const { text } = props;
 
-  useEffect(() => {
-    if (!animate && scroll < 400) {
-      setAnimate(true);
-      setInitial(false);
-    }
-    if (!initial && scroll > 400) {
-      setInitial(true);
-      setAnimate(false);
-    }
-  }, [scroll]);
+  useEffect(
+    () => {
+      if (!animate && scroll < 400) {
+        setAnimate(true);
+        setInitial(false);
+      }
+      if (!initial && scroll > 400) {
+        setInitial(true);
+        setAnimate(false);
+      }
+    },
+    [scroll],
+  );
 
   return (
     <TitleWrapper size={h}>
@@ -86,8 +91,8 @@ const Title = props => {
       )}
       {!text && (
         <TitleItem animate={animate} initial={initial}>
-          At <TitleSpan>A blue lemon</TitleSpan> we create each one of our
-          projects to showcase the unique flavour and culture of the community.
+          At <TitleSpan>{LOCALES.APP_NAME} </TitleSpan>
+          {LOCALES.MAIN_TITLE}
         </TitleItem>
       )}
     </TitleWrapper>
@@ -95,7 +100,7 @@ const Title = props => {
 };
 
 Title.propTypes = {
-  text: PropTypes.string
-}
+  text: PropTypes.string,
+};
 
 export default Title;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Helmet from 'react-helmet';
 import Loadable from 'react-loadable';
+import { Redirect } from 'react-router-dom';
 
 import ProjectBody from '../components/Project-body';
 import Loader from '../components/Loader';
@@ -18,6 +19,7 @@ const Footer = Loadable({
 const Project = props => {
   const [data, setData] = useState({});
   const [lazy, setLazy] = useState(false);
+  const [redirect, setRedirect] = useState(false);
   const { pathname } = props.location;
 
   function fetchData(id) {
@@ -28,9 +30,13 @@ const Project = props => {
           setData(res.data);
         } else {
           setData({});
+          setRedirect(true);
         }
       })
-      .catch(err => setData({}));
+      .catch(err => {
+        setData({});
+        setRedirect(true);
+      });
   }
 
   useEffect(() => {
@@ -48,7 +54,11 @@ const Project = props => {
     [lazy],
   );
 
-  if (Object.keys(data).length === 0) return <Loader msg={'Loading project'} />;
+  if (Object.keys(data).length === 0 && !redirect)
+    return <Loader msg={'Loading project'} />;
+
+  if (Object.keys(data).length === 0 && redirect)
+    return <Redirect to='/not-found' />;
 
   return (
     <section>

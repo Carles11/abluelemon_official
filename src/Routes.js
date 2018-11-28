@@ -28,8 +28,8 @@ const NotFound = Loadable({
 const Routes = () => (
   <Switch>
     <Route exact path='/' component={Landing} />
+    <Route path='/projects/:slug' component={Project} />
     <Route path='/projects' component={Projects} />
-    <Route path='/project/:slug' component={Project} />
     <Route path='/contact' component={Contact} />
     <Route component={NotFound} />
   </Switch>

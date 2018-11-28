@@ -84,7 +84,7 @@ const ProjectList = props => {
     <Container position={height}>
       <TitleSection
         title={LOCALES.PROJECTS_TITLE}
-        text={[LOCALES.PROJECTS_DESCRIPTION, LOCALES.PROJECTS_DESCRIPTION_1]}
+        text={LOCALES.PROJECTS_DESCRIPTION}
         show={render}
       />
       <Body>

@@ -20,6 +20,7 @@ const Container = styled.section`
   background: #262938;
   z-index: 1;
   min-height: ${props => props.position + 'px'};
+  margin-top: -0.5rem;
 
   @media only screen and (max-width: 768px) {
     flex-direction: column;

@@ -9,7 +9,6 @@ import { LocalesContext } from './components/Context';
 
 const App = () => {
   const LOCALES = useContext(LocalesContext);
-
   SmoothScroll(document, 90, 16);
 
   return (

@@ -18,7 +18,7 @@ const Footer = Loadable({
 const Project = props => {
   const [data, setData] = useState({});
   const [lazy, setLazy] = useState(false);
-  const { pathname } = props.location ? props.location : window.location;
+  const { pathname } =  window.location;
 
   function fetchData(id) {
     fetch(`${API_URL}projects/${id}`, fetch_options.get)

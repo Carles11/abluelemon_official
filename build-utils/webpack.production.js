@@ -8,7 +8,8 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 module.exports = dirname => ({
   output: {
-    filename: '[chunkhash].js',
+    filename: '[hash].bundle.js',
+    chunkFilename: '[id].[chunkhash].lazy.js',
   },
   optimization: {
     minimizer: [
@@ -40,7 +41,7 @@ module.exports = dirname => ({
       ],
     }),
     new ImageminPlugin({
-      pngquant: { quality: '50' },
+      pngquant: { quality: '75' },
       plugins: [imageminMozjpeg({ quality: '75' })],
     }),
   ],

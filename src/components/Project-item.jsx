@@ -177,7 +177,7 @@ const ProjectItem = props => {
 
   return (
     <Container render={render} order={order}>
-      <Figure to={`/projects/${slug}`}>
+      <Figure to={`/project/${slug}`}>
         <Image className='lazyload' data-src={images[0]} alt={title} />
         <Label>View Project</Label>
       </Figure>

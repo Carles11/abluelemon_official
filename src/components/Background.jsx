@@ -44,14 +44,22 @@ const iconStyling = css`
   top: -5rem;
   left: 50%;
   transform: translateX(-50%);
+  opacity: 0;
 `;
 
 const Icon = styled(IconArrow)`
   ${iconStyling}
+
+  ${props =>
+    props.visible &&
+    css`
+      opacity: 1;
+    `}
 `;
 
 const Background = props => {
   const [render, setRender] = useState(false);
+  const [visible, setVisible] = useState(true);
   const scroll = useScrollPosition();
   const position = Math.floor(scroll / 10);
   const { url, text } = props;
@@ -61,6 +69,17 @@ const Background = props => {
       setRender(true);
     },
     [render],
+  );
+
+  useEffect(
+    () => {
+      if (scroll > 150) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+    },
+    [scroll],
   );
 
   return (
@@ -73,7 +92,7 @@ const Background = props => {
           style={{ backgroundImage: `url(${url})` }}
         />
       </Figure>
-      <Icon {...props}/>
+      <Icon visible={visible} {...props} />
     </Fragment>
   );
 };

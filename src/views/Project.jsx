@@ -3,7 +3,6 @@ import Helmet from 'react-helmet';
 import Loadable from 'react-loadable';
 import { Redirect } from 'react-router-dom';
 
-import ProjectBody from '../components/Project-body';
 import Loader from '../components/Loader';
 import Background from '../components/Background';
 import { getLastStr } from '../utils/helpers';
@@ -13,6 +12,11 @@ const { API_URL, fetch_options } = config;
 
 const Footer = Loadable({
   loader: () => import(/* webpackChunkName: 'footer' */ '../components/Footer'),
+  loading: Loader,
+});
+
+const ProjectBody = Loadable({
+  loader: () => import(/* webpackChunkName: 'project-body' */ '../components/Project-body'),
   loading: Loader,
 });
 
@@ -49,6 +53,7 @@ const Project = props => {
   useEffect(
     () => {
       Footer.preload();
+      ProjectBody.preload()
       setLazy(true);
     },
     [lazy],
@@ -70,7 +75,7 @@ const Project = props => {
         ]}
       />
       <Background url={data.images[1]} text={data.title} />
-      <ProjectBody />
+      {!!lazy && <ProjectBody {...data} />}
       {!!lazy && <Footer />}
     </section>
   );

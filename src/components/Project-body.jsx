@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useWindowSize } from './Hooks'
+import { useWindowSize } from './Hooks';
 
 const Container = styled.section`
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-top: ${props => props.position + 'px'};
   min-height: ${props => props.position + 'px'};
@@ -16,6 +16,7 @@ const Container = styled.section`
   box-sizing: border-box;
   background: #262938;
   z-index: 1;
+  opacity: 0.99;
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     padding: 5%;
@@ -28,13 +29,18 @@ const Container = styled.section`
 `;
 
 const ProjectBody = props => {
+  const { title, description } = props
   const { h: height } = useWindowSize();
 
-  return(
-    <Container position={height}>
-      <h1>project body</h1>
-    </Container>
-  )
-}
+  const [main, ...paragraphs] = description
 
-export default ProjectBody
+  return (
+    <Container position={height}>
+      <h1>{title}</h1>
+      <h2>{main}</h2>
+      {paragraphs.map(par => <p>{par}</p>)}
+    </Container>
+  );
+};
+
+export default ProjectBody;

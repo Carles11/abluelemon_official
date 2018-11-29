@@ -5,9 +5,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const RobotstxtPlugin = require("robotstxt-webpack-plugin").default;
+const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
-
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = dirname => ({
   output: {
@@ -38,7 +38,7 @@ module.exports = dirname => ({
       inject: true,
       icons: [
         {
-          src: path.resolve('src/assets/image/icon.png'),
+          src: path.resolve('src/assets/image/logo.png'),
           sizes: [192, 512], // multiple sizes
         },
       ],
@@ -48,11 +48,16 @@ module.exports = dirname => ({
       plugins: [imageminMozjpeg({ quality: '75' })],
     }),
     new RobotstxtPlugin({
-      sitemap: "https://abluelemon.com/sitemap.xml",
-      host: "https://abluelemon.com"
+      sitemap: 'https://abluelemon.com/sitemap.xml',
+      host: 'https://abluelemon.com',
     }),
-    new SitemapPlugin('https://abluelemon.com', ['/projects', '/contact'])
-
+    new SitemapPlugin('https://abluelemon.com', ['/projects', '/contact']),
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true,
+    }),
   ],
   module: {
     rules: [

@@ -38,7 +38,7 @@ module.exports = dirname => ({
       inject: true,
       icons: [
         {
-          src: path.resolve('src/assets/image/logo.png'),
+          src: path.resolve('src/assets/image/icon.png'),
           sizes: [192, 512], // multiple sizes
         },
       ],

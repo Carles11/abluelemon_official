@@ -38,6 +38,10 @@ const Main = styled.h3`
   margin-top: 0.5rem;
 `;
 
+const Paragraph = styled.p`
+  line-height: 1.5;
+`;
+
 const ProjectBody = props => {
   const { title, description } = props;
   const { h: height } = useWindowSize();
@@ -49,7 +53,7 @@ const ProjectBody = props => {
       <Title>{title}</Title>
       <Main>{main}</Main>
       {paragraphs.map((par, i) => (
-        <p key={i}>{par}</p>
+        <Paragraph key={i}>{par}</Paragraph>
       ))}
     </Container>
   );

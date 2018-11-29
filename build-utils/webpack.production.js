@@ -5,6 +5,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const RobotstxtPlugin = require("robotstxt-webpack-plugin").default;
+const SitemapPlugin = require('sitemap-webpack-plugin').default;
+
 
 module.exports = dirname => ({
   output: {
@@ -44,6 +47,12 @@ module.exports = dirname => ({
       pngquant: { quality: '75' },
       plugins: [imageminMozjpeg({ quality: '75' })],
     }),
+    new RobotstxtPlugin({
+      sitemap: "https://abluelemon.com/sitemap.xml",
+      host: "https://abluelemon.com"
+    }),
+    new SitemapPlugin('https://abluelemon.com', ['/projects', '/contact'])
+
   ],
   module: {
     rules: [

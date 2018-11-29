@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { IconArrow } from './Icons';
 import { useScrollPosition } from './Hooks';
 import Title from '../components/Title';
 
@@ -38,6 +39,17 @@ const Image = styled.div.attrs({
     `}
 `;
 
+const iconStyling = css`
+  position: absolute;
+  top: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+const Icon = styled(IconArrow)`
+  ${iconStyling}
+`;
+
 const Background = props => {
   const [render, setRender] = useState(false);
   const scroll = useScrollPosition();
@@ -61,6 +73,7 @@ const Background = props => {
           style={{ backgroundImage: `url(${url})` }}
         />
       </Figure>
+      <Icon {...props}/>
     </Fragment>
   );
 };

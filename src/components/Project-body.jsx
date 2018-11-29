@@ -36,10 +36,11 @@ const Title = styled.h4`
 
 const Main = styled.h3`
   margin-top: 0.5rem;
+  line-height: 1.4;
 `;
 
 const Paragraph = styled.p`
-  line-height: 1.5;
+  line-height: 1.6;
 `;
 
 const ProjectBody = props => {

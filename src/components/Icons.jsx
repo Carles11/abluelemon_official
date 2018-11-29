@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
+
+import arrow from '../assets/image/arrow.png';
 
 const ButtonIconMenu = styled.button`
   background: none;
@@ -82,8 +84,25 @@ IconMenu.propTypes = {
   visible: PropTypes.bool.isRequired,
 };
 
-const IconArrowDown = () => {
-  
-}
+const AnimateLoader = keyframes`
+  0% { top: -5rem;}
+  50% { top: -3rem;}
+  100% { top: -5rem; }
+`;
 
-export default IconMenu;
+const Image = styled.img`
+  animation: ${AnimateLoader} 1000ms infinite ease-in-out;
+`;
+
+const IconArrow = props => {
+  const { className } = props;
+  return (
+    <Image
+      data-src={arrow}
+      alt='Scroll Down'
+      className={`${className} lazyload`}
+    />
+  );
+};
+
+export { IconMenu, IconArrow };

@@ -8,6 +8,8 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 /* eslint-disable */
+import config from './config'
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -30,8 +32,8 @@ export default function register() {
     }
 
     window.addEventListener('load', () => {
-			const swUrl = `${PUBLIC_URL}/service-worker.js`;
-			console.log(swUrl)
+			const swUrl = `${config.PUBLIC_URL}/service-worker.js`;
+			
       if (isLocalhost) {
         // This is running on localhost. Lets check if a service worker still exists or not.
         checkValidServiceWorker(swUrl);

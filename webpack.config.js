@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackMerge = require('webpack-merge');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const modeConfig = env => require(`./build-utils/webpack.${env}`)(env);
 const presetConfig = require('./build-utils/loadPresets');
@@ -38,6 +39,12 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           favicon: './src/assets/image/favicon.ico',
         }),
         new webpack.ProgressPlugin(),
+        new WorkboxPlugin.GenerateSW({
+          // these options encourage the ServiceWorkers to get in there fast
+          // and not allow any straggling "old" SWs to hang around
+          clientsClaim: true,
+          skipWaiting: true,
+        }),
       ],
       resolve: {
         extensions: ['.js', '.jsx'],

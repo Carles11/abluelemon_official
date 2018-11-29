@@ -64,7 +64,7 @@ const Body = styled.article`
   align-items: flex-start;
   z-index: 1;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1224px) {
     margin-top: -2rem;
     flex-direction: column;
   }
@@ -77,7 +77,7 @@ const Address = styled.address`
     margin: 0 2%;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1224px) {
     width: 100%;
     text-align: center;
     margin: 0 0 5%;

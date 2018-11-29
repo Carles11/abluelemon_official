@@ -9,10 +9,10 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   margin-top: ${props => props.position + 'px'};
   min-height: ${props => props.position + 'px'};
-  padding: 3% 10% 1rem;
+  padding: 3% 15% 1rem;
   box-sizing: border-box;
   background: #262938;
   z-index: 1;
@@ -28,17 +28,29 @@ const Container = styled.section`
   }
 `;
 
+const Title = styled.h4`
+  color: #15b6cd;
+  margin-bottom: 0;
+  line-height: 1;
+`;
+
+const Main = styled.h3`
+  margin-top: 0.5rem;
+`;
+
 const ProjectBody = props => {
-  const { title, description } = props
+  const { title, description } = props;
   const { h: height } = useWindowSize();
 
-  const [main, ...paragraphs] = description
+  const [main, ...paragraphs] = description;
 
   return (
     <Container position={height}>
-      <h1>{title}</h1>
-      <h2>{main}</h2>
-      {paragraphs.map(par => <p>{par}</p>)}
+      <Title>{title}</Title>
+      <Main>{main}</Main>
+      {paragraphs.map((par, i) => (
+        <p key={i}>{par}</p>
+      ))}
     </Container>
   );
 };

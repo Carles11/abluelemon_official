@@ -18,7 +18,7 @@ module.exports = dirname => ({
     minimizer: [
       new TerserPlugin({
         cache: true,
-        sourceMap: true,
+        sourceMap: false,
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
@@ -30,9 +30,9 @@ module.exports = dirname => ({
     }),
     new WebpackPwaManifest({
       name: 'ABlueLemon',
-      short_name: 'aBlueLemon',
-      description: 'A Blue Lemon Web App!',
-      background_color: '#ffffff',
+      short_name: 'ABlueLemon',
+      description: 'A Blue Lemon Production Web App',
+      background_color: '#262938',
       crossorigin: 'use-credentials',
       theme_color: '#262938',
       inject: true,
@@ -44,7 +44,7 @@ module.exports = dirname => ({
       ],
     }),
     new ImageminPlugin({
-      pngquant: { quality: '75' },
+      pngquant: { quality: '50' },
       plugins: [imageminMozjpeg({ quality: '75' })],
     }),
     new RobotstxtPlugin({

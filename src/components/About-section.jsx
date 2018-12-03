@@ -5,10 +5,8 @@ import TitleSection from './Title-section';
 import Loader from './Loader';
 import Box from './Box';
 import { useWindowSize, useScrollPosition } from './Hooks';
-import config from '../config';
 import { LocalesContext } from './Context';
-
-const { API_URL, fetch_options } = config;
+import * as API from '../utils/API';
 
 const Container = styled.section`
   position: relative;
@@ -61,8 +59,8 @@ const AboutSection = () => {
   const scroll = useScrollPosition();
 
   function fetchData() {
-    fetch(`${API_URL}users`, fetch_options.get)
-      .then(res => res.json())
+    const promise = API.get('users');
+    promise
       .then(res => {
         if (res.success) {
           setData(res.data);
@@ -70,7 +68,10 @@ const AboutSection = () => {
           setData([]);
         }
       })
-      .catch(err => setData([]));
+      .catch(err => {
+        setData([]);
+        console.log(err);
+      });
   }
 
   useEffect(() => {
@@ -104,15 +105,7 @@ const AboutSection = () => {
         {data
           .sort((a, b) => (a._id > b._id ? -1 : 1))
           .map((a, i) => (
-            <Box
-              order={i + 1}
-              key={a._id}
-              img={a.img}
-              name={a.name}
-              description={a.description}
-              mail={a.email}
-              role={a.role}
-            />
+            <Box order={i + 1} key={a._id} {...a} />
           ))}
       </Boxes>
     </Container>

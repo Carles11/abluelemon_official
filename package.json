@@ -1,6 +1,6 @@
 {
   "name": "abluelemon",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A blue lemon productions web app",
   "main": "./src/index.js",
   "repository": "https://github.com/txiverke/abluelemon.git",

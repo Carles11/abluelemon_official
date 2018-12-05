@@ -60,28 +60,22 @@ const Image = styled.div`
 
 const Body = styled.article`
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   z-index: 1;
 
   @media only screen and (max-width: 1224px) {
     margin-top: -2rem;
-    flex-direction: column;
   }
 `;
 
 const Address = styled.address`
-  width: 32%;
-
-  &:nth-child(2) {
-    margin: 0 2%;
-  }
+  width: 100%;
+  text-align: center;
+  margin: 0 0 5%;
 
   @media only screen and (max-width: 1224px) {
-    width: 100%;
-    text-align: center;
-    margin: 0 0 5%;
-
     &:nth-child(2) {
       margin: 0;
     }

@@ -2,14 +2,10 @@ const express = require('express')
 const path = require('path')
 const compression = require('compression')
 const bodyParser = require('body-parser')
-const dotenv = require('dotenv').config()
-
-dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3000
 const ENV = process.env.NODE_ENV || 'development'
-console.log('PORTPORTPORTPORT', process.env)
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: 'true' }))
 app.use(bodyParser.json())

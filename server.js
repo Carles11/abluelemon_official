@@ -29,5 +29,5 @@ app.get('/*', (req, res) => {
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server running on port ${String(PORT)} in (${ENV}).`)
+  console.log(`Server running fine on port ${String(PORT)} in (${ENV}).`)
 })

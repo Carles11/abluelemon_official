@@ -1,8 +1,8 @@
 const express = require('express')
+const dotenv = require('dotenv').config()
 const path = require('path')
 const compression = require('compression')
 const bodyParser = require('body-parser')
-const dotenv = require('dotenv').config()
 
 dotenv.config()
 

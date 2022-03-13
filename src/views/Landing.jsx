@@ -28,7 +28,7 @@ const Landing = () => {
     },
     [lazy],
   );
-  console.log('process.env.PORT',process.env)
+  console.log('process.env.PORT',process.env.PORT)
   return (
     <Fragment>
       <Background image={url} />
